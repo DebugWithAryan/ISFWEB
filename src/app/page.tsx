@@ -2,6 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+// Register ScrollToPlugin with GSAP
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function Home() {
   // State to control intro animation
@@ -13,6 +17,40 @@ export default function Home() {
   const planRef = useRef(null);
   const buildRef = useRef(null);
   const introRef = useRef(null);
+
+  // Smooth scroll function
+  interface ScrollToPluginConfig {
+    y: HTMLElement;
+    offsetY: number;
+  }
+
+  interface SmoothScrollTweenConfig {
+    duration: number;
+    scrollTo: ScrollToPluginConfig;
+    ease: string;
+  }
+
+  const smoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    targetId: string
+  ): void => {
+    e.preventDefault();
+
+    // Get the target element
+    const targetElement: HTMLElement | null = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Use GSAP to animate scrolling
+      gsap.to(window, {
+        duration: 1.2,
+        scrollTo: {
+          y: targetElement,
+          offsetY: 80, // Offset to account for fixed navbar
+        },
+        ease: "power3.inOut",
+      } as SmoothScrollTweenConfig);
+    }
+  };
 
   useEffect(() => {
     // GSAP animation timeline
@@ -92,7 +130,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Modern Navigation */}
+      {/* Modern Navigation - Updated with smooth scroll */}
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -105,24 +143,28 @@ export default function Home() {
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="#home"
+              onClick={(e) => smoothScroll(e, "home")}
               className="text-gray-600 hover:text-[#2496FE] transition-all duration-300 text-sm font-medium"
             >
               Home
             </a>
             <a
               href="#about"
+              onClick={(e) => smoothScroll(e, "about")}
               className="text-gray-600 hover:text-[#2496FE] transition-all duration-300 text-sm font-medium"
             >
               About
             </a>
             <a
               href="#events"
+              onClick={(e) => smoothScroll(e, "events")}
               className="text-gray-600 hover:text-[#2496FE] transition-all duration-300 text-sm font-medium"
             >
               Events
             </a>
             <a
               href="#contact"
+              onClick={(e) => smoothScroll(e, "contact")}
               className="text-gray-600 hover:text-[#2496FE] transition-all duration-300 text-sm font-medium"
             >
               Contact
