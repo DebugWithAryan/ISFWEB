@@ -186,9 +186,9 @@ export default function Home() {
       setShowIntro(false);
     }, 10000);
     const timeouts = [
-      setTimeout(() => animateIETE(), 2600),
-      setTimeout(() => animateSTUDENTS(), 2900),
-      setTimeout(() => animateFORUM(), 3100),
+      setTimeout(() => animateIETE(), 3300),
+      setTimeout(() => animateSTUDENTS(), 3600),
+      setTimeout(() => animateFORUM(), 3900),
     ];
     const handleScroll = () => {
       setNavScrolled(window.scrollY > 10);
