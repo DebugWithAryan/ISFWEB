@@ -184,7 +184,7 @@ export default function Home() {
 
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 10000);
+    }, 5000);
     const timeouts = [
       setTimeout(() => animateIETE(), 3300),
       setTimeout(() => animateSTUDENTS(), 3600),
