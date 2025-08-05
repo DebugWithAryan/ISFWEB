@@ -1,1 +1,183 @@
 @import "tailwindcss";
+:root {
+  --expo-in: linear(
+    0 0%,
+    0.0085 31.26%,
+    0.0167 40.94%,
+    0.0289 48.86%,
+    0.0471 55.92%,
+    0.0717 61.99%,
+    0.1038 67.32%,
+    0.1443 72.07%,
+    0.1989 76.7%,
+    0.2659 80.89%,
+    0.3465 84.71%,
+    0.4419 88.22%,
+    0.554 91.48%,
+    0.6835 94.51%,
+    0.8316 97.34%,
+    1 100%
+  );
+  --expo-out: linear(
+    0 0%,
+    0.1684 2.66%,
+    0.3165 5.49%,
+    0.446 8.52%,
+    0.5581 11.78%,
+    0.6535 15.29%,
+    0.7341 19.11%,
+    0.8011 23.3%,
+    0.8557 27.93%,
+    0.8962 32.68%,
+    0.9283 38.01%,
+    0.9529 44.08%,
+    0.9711 51.14%,
+    0.9833 59.06%,
+    0.9915 68.74%,
+    1 100%
+  );
+}
+
+body {
+  margin: 0;
+  background: black;
+}
+
+.App {
+  display: flex;
+  margin: 20;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.special {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.animated__text {
+  font-size: 5rem;
+  color: white;
+  opacity: 0;
+  font-family: "Anton", sans-serif;
+  font-family: "Anton";
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transform: rotateX(-90deg) translateY(4vw);
+  transform-origin: bottom center;
+  position: absolute;
+  opacity: 0;
+}
+.preloader {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 99;
+  background-color: black;
+}
+
+.preloader__content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100vw;
+}
+
+.preloader__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.special {
+  transform-style: preserve-3d;
+}
+
+.launch-text {
+  margin-left: 90px;
+}
+
+.special svg {
+  transition: all 0.4s;
+  margin: 0px;
+  opacity: 1;
+}
+
+.item {
+  width: fit-content;
+  overflow: visible;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  z-index: 1;
+}
+
+.rocket {
+  position: absolute;
+  right: -170px;
+  z-index: 1;
+}
+@media screen and (max-width: 1500px) {
+  .animated__text {
+    font-size: 6rem;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .animated__text {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .animated__text {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .animated__text {
+    transform: rotateX(-90deg) translateY(6.5vw);
+    font-size: 3.5rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .animated__text {
+    font-size: 3rem;
+  }
+
+  .rocket {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .animated__text {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .preloader__text {
+    width: 100%;
+  }
+
+  .animated__text {
+    transform: rotateX(-90deg) translateY(6.5vw);
+    font-size: 3rem;
+    left: 0;
+  }
+}
