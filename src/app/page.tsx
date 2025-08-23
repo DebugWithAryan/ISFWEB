@@ -6,6 +6,8 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import "./index.css";
 import Image from "next/image";
 import { Anton, Rubik } from "next/font/google";
+import { FaLinkedin, FaInstagram } from 'react-icons/fa';
+
 // Initialize Anton font
 const antonFont = Anton({
   weight: "400",
@@ -17,20 +19,7 @@ const rubikFont = Rubik({
   subsets: ["latin"],
   display: "swap",
 });
-const icon = {
-  hidden: {
-    pathLength: 0,
-    fill: "rgba(0, 0, 0, 0)",
-  },
-  visible: {
-    opacity: 1,
-    pathLength: 0.3,
-    transition: {
-      pathLength: { delay: 0.2, type: "spring", duration: 3.5, bounce: 0 },
-      opacity: { delay: 0.2, duration: 1 },
-    },
-  },
-};
+
 // Register ScrollToPlugin with GSAP
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -43,15 +32,15 @@ const wordPaths = {
     "M20.3739 0.519085V2.42826H18.3475V3.75248H20.2919V5.61869H18.3475V7.22612H20.5087V9.14897H15.9501V0.519085H20.3739Z", // E
   ],
   STUDENTS: [
-    "M28.187 0.443359C29.1465 0.443365 29.8666 0.649285 30.3032 1.09961L30.4555 1.27637C30.7869 1.71355 30.9428 2.31462 30.9428 3.05957V3.20996H28.5464V2.4873C28.5464 2.41504 28.5231 2.37248 28.4819 2.34082L28.479 2.33887C28.4358 2.30399 28.3661 2.27735 28.2514 2.27734C28.107 2.27734 28.0314 2.31109 27.9927 2.34863L27.9917 2.34766C27.9505 2.38825 27.9273 2.44307 27.9272 2.52441C27.9272 2.60733 27.9548 2.70791 28.0239 2.82812C28.0712 2.91028 28.1592 3.01091 28.2954 3.12891L28.4477 3.25293L28.4487 3.25391L29.6372 4.17578L29.8159 4.31836C29.991 4.46284 30.155 4.61391 30.3081 4.77148C30.5203 4.98673 30.6908 5.23857 30.8188 5.52539L30.8647 5.6377C30.9653 5.9064 31.0132 6.21874 31.0132 6.57129C31.0132 7.37546 30.8293 8.02692 30.4419 8.50684C30.0451 8.99999 29.3683 9.22458 28.4624 9.22461C27.5075 9.22461 26.7825 9.03381 26.3237 8.61816H26.3227C25.8655 8.19992 25.6528 7.54783 25.6528 6.69922V5.73535H27.9917V6.92676C27.9917 7.10164 28.0241 7.2203 28.0727 7.29785C28.1097 7.34916 28.1798 7.3916 28.3276 7.3916C28.4989 7.39159 28.5697 7.3499 28.5971 7.31543L28.5991 7.3125C28.6389 7.26509 28.6753 7.16416 28.6753 6.97363C28.6753 6.72932 28.6457 6.53524 28.5913 6.38672L28.5903 6.38574C28.5367 6.23692 28.4415 6.09104 28.2983 5.94922L28.2954 5.94629C28.1505 5.79625 27.9443 5.61879 27.6743 5.41309V5.41211L26.7485 4.70215V4.70312C26.0317 4.15659 25.6528 3.51328 25.6528 2.77539C25.6528 2.03645 25.8657 1.45034 26.311 1.04199V1.04102C26.7579 0.635203 27.3914 0.443359 28.187 0.443359Z", // S
-    "M36.9546 0.519085V2.41948H35.73V9.14897H33.3687V2.41948H32.1441V0.519085H36.9546Z", // T
-    "M40.4881 0.519085V6.70366C40.4881 6.83536 40.4972 6.96209 40.5155 7.08354L40.5311 7.1558C40.5501 7.22394 40.5792 7.27787 40.6161 7.32084C40.647 7.35689 40.7093 7.39116 40.8416 7.39116C40.9786 7.39114 41.0426 7.3577 41.0731 7.32475C41.1202 7.26957 41.154 7.19408 41.1668 7.08842L41.1678 7.08354C41.1861 6.9621 41.1952 6.83535 41.1952 6.70366V0.519085H43.4979V6.77006C43.4979 7.55354 43.288 8.17291 42.8436 8.60112H42.8426C42.397 9.02702 41.7193 9.22513 40.8416 9.22514C39.964 9.22514 39.2863 9.02698 38.8407 8.60112H38.8397C38.3953 8.17291 38.1844 7.55359 38.1844 6.77006V0.519085H40.4881Z", // U
-    "M48.0535 0.519085C48.8148 0.51912 49.415 0.690885 49.8279 1.05912L49.9734 1.20463C50.2893 1.56162 50.4401 2.04202 50.4402 2.62846V6.52885C50.4402 7.33726 50.2648 7.98462 49.8923 8.44975L49.8914 8.44877C49.5102 8.92969 48.8575 9.14893 47.9832 9.14897H45.0681V0.519085H48.0535ZM47.4421 7.37748H47.6492C47.823 7.37748 47.9262 7.34296 47.9832 7.29838C48.033 7.25926 48.0671 7.1965 48.0671 7.08256V2.78471C48.0671 2.65313 48.0558 2.55305 48.0369 2.481C48.0176 2.40774 47.9942 2.37654 47.9802 2.36479L47.9753 2.36088C47.9577 2.34487 47.9176 2.32193 47.8376 2.30424C47.7593 2.28694 47.6545 2.2769 47.5203 2.2769H47.4421V7.37748Z", // D
-    "M56.4869 0.519085V2.42826H54.4606V3.75248H56.4049V5.61869H54.4606V7.22612H56.6217V9.14897H52.0631V0.519085H56.4869Z", // E
-    "M60.4745 0.519085L60.5028 0.634319L61.1552 3.37846V0.519085H63.4462V9.14897H61.164L61.1366 9.03569L60.4013 6.06498V9.14897H58.0858V0.519085H60.4745Z", // N
-    "M69.6102 0.519085V2.41948H68.3856V9.14897H66.0243V2.41948H64.7997V0.519085H69.6102Z", // T
-    "M73.2863 0.443359C74.2458 0.443365 74.966 0.649285 75.4025 1.09961L75.5549 1.27637C75.8862 1.71355 76.0422 2.31462 76.0422 3.05957V3.20996H73.6457V2.4873C73.6457 2.41504 73.6224 2.37248 73.5812 2.34082L73.5783 2.33887C73.5351 2.30399 73.4654 2.27735 73.3508 2.27734C73.2063 2.27734 73.1307 2.31109 73.092 2.34863L73.091 2.34766C73.0498 2.38825 73.0266 2.44307 73.0266 2.52441C73.0266 2.60733 73.0541 2.70791 73.1232 2.82812C73.1705 2.91028 73.2585 3.01091 73.3947 3.12891L73.5471 3.25293L73.548 3.25391L74.7365 4.17578L74.9152 4.31836C75.0903 4.46284 75.2543 4.61391 75.4074 4.77148C75.6197 4.98673 75.7902 5.23857 75.9182 5.52539L75.9641 5.6377C76.0646 5.9064 76.1125 6.21874 76.1125 6.57129C76.1125 7.37546 75.9286 8.02692 75.5412 8.50684C75.1445 8.99999 74.4676 9.22458 73.5617 9.22461C72.6068 9.22461 71.8818 9.03381 71.423 8.61816H71.4221C70.9649 8.19992 70.7522 7.54783 70.7521 6.69922V5.73535H73.091V6.92676C73.0911 7.10164 73.1234 7.2203 73.1721 7.29785C73.209 7.34916 73.2791 7.3916 73.4269 7.3916C73.5982 7.39159 73.6691 7.3499 73.6965 7.31543L73.6984 7.3125C73.7382 7.26509 73.7746 7.16416 73.7746 6.97363C73.7746 6.72932 73.745 6.53524 73.6906 6.38672L73.6896 6.38574C73.6361 6.23692 73.5409 6.09104 73.3977 5.94922L73.3947 5.94629C73.2498 5.79625 73.0436 5.61879 72.7736 5.41309V5.41211L71.8478 4.70215V4.70312C71.1311 4.15659 70.7521 3.51328 70.7521 2.77539C70.7522 2.03645 70.9651 1.45034 71.4103 1.04199V1.04102C71.8572 0.635203 72.4907 0.443359 73.2863 0.443359Z", // S
-  ],
+        "M28.187 0.443359C29.1465 0.443365 29.8666 0.649285 30.3032 1.09961L30.4555 1.27637C30.7869 1.71355 30.9428 2.31462 30.9428 3.05957V3.20996H28.5464V2.4873C28.5464 2.41504 28.5231 2.37248 28.4819 2.34082L28.479 2.33887C28.4358 2.30399 28.3661 2.27735 28.2514 2.27734C28.107 2.27734 28.0314 2.31109 27.9927 2.34863L27.9917 2.34766C27.9505 2.38825 27.9273 2.44307 27.9272 2.52441C27.9272 2.60733 27.9548 2.70791 28.0239 2.82812C28.0712 2.91028 28.1592 3.01091 28.2954 3.12891L28.4477 3.25293L28.4487 3.25391L29.6372 4.17578L29.8159 4.31836C29.991 4.46284 30.155 4.61391 30.3081 4.77148C30.5203 4.98673 30.6908 5.23857 30.8188 5.52539L30.8647 5.6377C30.9653 5.9064 31.0132 6.21874 31.0132 6.57129C31.0132 7.37546 30.8293 8.02692 30.4419 8.50684C30.0451 8.99999 29.3683 9.22458 28.4624 9.22461C27.5075 9.22461 26.7825 9.03381 26.3237 8.61816H26.3227C25.8655 8.19992 25.6528 7.54783 25.6528 6.69922V5.73535H27.9917V6.92676C27.9917 7.10164 28.0241 7.2203 28.0727 7.29785C28.1097 7.34916 28.1798 7.3916 28.3276 7.3916C28.4989 7.39159 28.5697 7.3499 28.5971 7.31543L28.5991 7.3125C28.6389 7.26509 28.6753 7.16416 28.6753 6.97363C28.6753 6.72932 28.6457 6.53524 28.5913 6.38672L28.5903 6.38574C28.5367 6.23692 28.4415 6.09104 28.2983 5.94922L28.2954 5.94629C28.1505 5.79625 27.9443 5.61879 27.6743 5.41309V5.41211L26.7485 4.70215V4.70312C26.0317 4.15659 25.6528 3.51328 25.6528 2.77539C25.6528 2.03645 25.8657 1.45034 26.311 1.04199V1.04102C26.7579 0.635203 27.3914 0.443359 28.187 0.443359Z", // S
+        "M36.9546 0.519085V2.41948H35.73V9.14897H33.3687V2.41948H32.1441V0.519085H36.9546Z", // T
+        "M40.4881 0.519085V6.70366C40.4881 6.83536 40.4972 6.96209 40.5155 7.08354L40.5311 7.1558C40.5501 7.22394 40.5792 7.27787 40.6161 7.32084C40.647 7.35689 40.7093 7.39116 40.8416 7.39116C40.9786 7.39114 41.0426 7.3577 41.0731 7.32475C41.1202 7.26957 41.154 7.19408 41.1668 7.08842L41.1678 7.08354C41.1861 6.9621 41.1952 6.83535 41.1952 6.70366V0.519085H43.4979V6.77006C43.4979 7.55354 43.288 8.17291 42.8436 8.60112H42.8426C42.397 9.02702 41.7193 9.22513 40.8416 9.22514C39.964 9.22514 39.2863 9.02698 38.8407 8.60112H38.8397C38.3953 8.17291 38.1844 7.55359 38.1844 6.77006V0.519085H40.4881Z", // U
+        "M48.0535 0.519085C48.8148 0.51912 49.415 0.690885 49.8279 1.05912L49.9734 1.20463C50.2893 1.56162 50.4401 2.04202 50.4402 2.62846V6.52885C50.4402 7.33726 50.2648 7.98462 49.8923 8.44975L49.8914 8.44877C49.5102 8.92969 48.8575 9.14893 47.9832 9.14897H45.0681V0.519085H48.0535ZM47.4421 7.37748H47.6492C47.823 7.37748 47.9262 7.34296 47.9832 7.29838C48.033 7.25926 48.0671 7.1965 48.0671 7.08256V2.78471C48.0671 2.65313 48.0558 2.55305 48.0369 2.481C48.0176 2.40774 47.9942 2.37654 47.9802 2.36479L47.9753 2.36088C47.9577 2.34487 47.9176 2.32193 47.8376 2.30424C47.7593 2.28694 47.6545 2.2769 47.5203 2.2769H47.4421V7.37748Z", // D
+        "M56.4869 0.519085V2.42826H54.4606V3.75248H56.4049V5.61869H54.4606V7.22612H56.6217V9.14897H52.0631V0.519085H56.4869Z", // E
+        "M60.4745 0.519085L60.5028 0.634319L61.1552 3.37846V0.519085H63.4462V9.14897H61.164L61.1366 9.03569L60.4013 6.06498V9.14897H58.0858V0.519085H60.4745Z", // N
+        "M69.6102 0.519085V2.41948H68.3856V9.14897H66.0243V2.41948H64.7997V0.519085H69.6102Z", // T
+        "M73.2863 0.443359C74.2458 0.443365 74.966 0.649285 75.4025 1.09961L75.5549 1.27637C75.8862 1.71355 76.0422 2.31462 76.0422 3.05957V3.20996H73.6457V2.4873C73.6457 2.41504 73.6224 2.37248 73.5812 2.34082L73.5783 2.33887C73.5351 2.30399 73.4654 2.27735 73.3508 2.27734C73.2063 2.27734 73.1307 2.31109 73.092 2.34863L73.091 2.34766C73.0498 2.38825 73.0266 2.44307 73.0266 2.52441C73.0266 2.60733 73.0541 2.70791 73.1232 2.82812C73.1705 2.91028 73.2585 3.01091 73.3947 3.12891L73.5471 3.25293L73.548 3.25391L74.7365 4.17578L74.9152 4.31836C75.0903 4.46284 75.2543 4.61391 75.4074 4.77148C75.6197 4.98673 75.7902 5.23857 75.9182 5.52539L75.9641 5.6377C75.0646 5.9064 76.1125 6.21874 76.1125 6.57129C76.1125 7.37546 75.9286 8.02692 75.5412 8.50684C75.1445 8.99999 74.4676 9.22458 73.5617 9.22461C72.6068 9.22461 71.8818 9.03381 71.423 8.61816H71.4221C70.9649 8.19992 70.7522 7.54783 70.7521 6.69922V5.73535H73.091V6.92676C73.0911 7.10164 73.1234 7.2203 73.1721 7.29785C73.209 7.34916 73.2791 7.3916 73.4269 7.3916C73.5982 7.39159 73.6691 7.3499 73.6965 7.31543L73.6984 7.3125C73.7382 7.26509 73.7746 7.16416 73.7746 6.97363C73.7746 6.72932 73.745 6.53524 73.6906 6.38672L73.6896 6.38574C73.6361 6.23692 73.5409 6.09104 73.3977 5.94922L73.3947 5.94629C73.2498 5.79625 73.0436 5.61879 72.7736 5.41309V5.41211L71.8478 4.70215V4.70312C71.1311 4.15659 70.7521 3.51328 70.7521 2.77539C70.7522 2.03645 70.9651 1.45034 71.4103 1.04199V1.04102C71.8572 0.635203 72.4907 0.443359 73.2863 0.443359Z", // S
+      ],
   FORUM: [
     "M85.8978 0.519085V2.44291H83.848V3.4683H85.7923V5.3726H83.848V9.14897H81.474V0.519085H85.8978Z", // F
     "M89.9548 0.443359C90.8054 0.443375 91.4762 0.632387 91.9431 1.0332C92.4181 1.43777 92.6462 2.02567 92.6462 2.77051V6.72754C92.6462 7.51748 92.4182 8.14431 91.9421 8.58398C91.4717 9.01887 90.8013 9.22459 89.9548 9.22461C89.1082 9.22461 88.4358 9.0193 87.9617 8.58496L87.9607 8.58398C87.4887 8.14422 87.2624 7.51708 87.2624 6.72754V2.77051C87.2625 2.02611 87.4888 1.43888 87.9597 1.03418V1.0332C88.4304 0.632309 89.1035 0.443359 89.9548 0.443359ZM89.9841 2.27734C89.8442 2.27734 89.7637 2.31874 89.7136 2.37988C89.6589 2.44678 89.6189 2.56377 89.6189 2.75684V6.81738C89.6189 7.06851 89.6583 7.21622 89.7097 7.29102C89.7511 7.34836 89.8255 7.3916 89.9724 7.3916C90.082 7.39157 90.1489 7.3526 90.197 7.27734C90.2524 7.19058 90.2908 7.041 90.2908 6.80762V2.74219C90.2907 2.55146 90.2542 2.43531 90.2058 2.37012C90.1636 2.3135 90.0989 2.27737 89.9841 2.27734Z", // O
@@ -106,6 +95,7 @@ const forumVariants = {
   }),
   exit: { opacity: 0, transition: { duration: 0.5 } },
 };
+
 const special = {
   rotateX: 90,
   transition: { duration: 0.4 },
@@ -118,6 +108,26 @@ const svgAnimate = {
 const animatedText = {
   opacity: 1,
   transition: { duration: 0.4 },
+};
+
+// Section Divider Component
+const SectionDivider = () => {
+  return (
+    <div className="relative py-24">
+      <div className="absolute inset-0 flex items-center">
+        <div className="w-full border-t border-gray-700/50"></div>
+      </div>
+      <div className="relative flex justify-center">
+        <div className="bg-gray-900 px-8">
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center">
+              <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default function Home() {
@@ -203,11 +213,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-900 c">
-      {/* Intro Animation Overlay*/}
+      {/* Intro Animation Overlay */}
       <AnimatePresence mode="wait">
         {showIntro && (
           <motion.div
-            //@ts-ignore
             className="fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center space-y-8"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -241,7 +250,6 @@ export default function Home() {
                 ))}
               </motion.svg>
               <motion.p
-                //@ts-ignore
                 className="animated__text text-white text-4xl text-center absolute inset-0 flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0 }}
@@ -282,7 +290,6 @@ export default function Home() {
                 ))}
               </motion.svg>
               <motion.p
-                //@ts-ignore
                 className="animated__text text-4xl text-center absolute inset-0 flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0 }}
@@ -325,7 +332,6 @@ export default function Home() {
                 ))}
               </motion.svg>
               <motion.p
-                //@ts-ignore
                 className="animated__text text-white text-4xl text-center absolute inset-0 flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0 }}
@@ -346,7 +352,6 @@ export default function Home() {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: showIntro ? 4 : 0, duration: 0.5 }}
-        //@ts-ignore
         className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 ${
           rubikFont.className
         }
@@ -382,8 +387,8 @@ export default function Home() {
               About
             </a>
             <a
-              href="#events"
-              onClick={(e) => smoothScroll(e, "events")}
+              href="#engineers"
+              onClick={(e) => smoothScroll(e, "engineers")}
               className="text-gray-300 animated-underline font-large"
             >
               Engineers
@@ -395,7 +400,6 @@ export default function Home() {
             >
               Events
             </a>
-
             <a
               href="#contact"
               onClick={(e) => smoothScroll(e, "contact")}
@@ -407,20 +411,15 @@ export default function Home() {
         </div>
       </motion.nav>
 
-      {/* Modern Stats Section */}
+      {/* Modern Home Section */}
       <motion.section
-        // initial={{ opacity: 0 }}
-        // whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        //@ts-ignore
-        className=" relative min-h-screen flex items-center"
+        className="relative min-h-screen flex items-center"
         id="home"
       >
-        {/* Background Image with horizontal flip and 70% opacity */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
-          {/* Highlight effect: adjust left/top/width/height as needed */}
           <Image
             src="/OHM_SIR.JPG"
             alt="OHM SIR Background"
@@ -439,7 +438,6 @@ export default function Home() {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: showIntro ? 2 : 0, duration: 1 }}
-                //@ts-ignore
                 className={`md:text-7xl font-bold text-gray-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
                 style={{
                   fontSize: "10rem",
@@ -453,7 +451,6 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: showIntro ? 2 : 0, duration: 1 }}
-                //@ts-ignore
                 className={`md:text-7xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide mr-auto`}
                 style={{
                   fontSize: "10rem",
@@ -469,7 +466,6 @@ export default function Home() {
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: showIntro ? 2 : 0, duration: 1 }}
-                //@ts-ignore
                 className={`md:text-7xl font-bold text-gray-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
                 style={{
                   fontSize: "10rem",
@@ -480,77 +476,420 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Hero content */}
       </motion.section>
 
-      {/* Modern About Section with Bento Grid */}
-      <section id="about" className="py-32">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-24">
-            <div className="inline-flex items-center px-4 py-2 bg-gray-800 rounded-full text-gray-300 text-sm font-medium mb-6">
-              About Our Community
+      {/* Section Divider */}
+      <SectionDivider />
+
+      {/* Modern About Section */}
+      <motion.section
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="relative min-h-screen flex items-center"
+        id="about"
+      >
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+          <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
+        </div>
+        <div
+          id="Title"
+          className="relative z-10 max-w-7xl mr-auto px-8 flex flex-col h-full"
+        >
+          <div>
+            <div className="flex justify-center mb-2 items-end">
+              <motion.h1
+                initial={{ y: -100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                className={`md:text-7xl font-bold text-gray-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
+                style={{
+                  fontSize: "10rem",
+                }}
+              >
+                ABOUT
+              </motion.h1>
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-100 mb-8">
-              What We're <span className="text-[#2496FE]">About</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              We're building more than just a club – we're creating a ecosystem
-              where technology meets creativity.
-            </p>
+            <div className="flex justify-center mb-2 items-end mr-auto">
+              <motion.h1
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className={`md:text-7xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide mr-auto`}
+                style={{
+                  fontSize: "10rem",
+                  color: "transparent",
+                  WebkitTextStroke: "5px rgb(255, 255, 255)",
+                }}
+              >
+                IETE
+              </motion.h1>
+            </div>
           </div>
-
-          {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="md:col-span-2 bg-gradient-to-br from-[#2496FE] to-[#1e7ce8] rounded-3xl p-12 text-white relative overflow-hidden">
-              <div className="absolute top-8 right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-              <div className="relative z-10">
-                <div className="text-6xl mb-6">💻</div>
-                <h3 className="text-3xl font-bold mb-4">Hands-on Learning</h3>
-                <p className="text-xl text-blue-100 leading-relaxed">
-                  From beginner workshops to advanced hackathons, we learn by
-                  building real projects that matter.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-gray-800/60 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:scale-105 transition-all duration-500">
-              <div className="text-4xl mb-6">🚀</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-100">
-                Innovation
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                Push boundaries and explore emerging technologies in AI,
-                blockchain, and beyond.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-800/60 backdrop-blur-xl rounded-3xl p-8 border border-gray-700/50 hover:scale-105 transition-all duration-500">
-              <div className="text-4xl mb-6">🌐</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-100">
-                Networking
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                Connect with industry leaders, alumni, and peers who share your
-                passion for technology.
-              </p>
-            </div>
-
-            <div className="md:col-span-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl p-12 text-white relative overflow-hidden">
-              <div className="absolute bottom-8 left-8 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-              <div className="relative z-10">
-                <div className="text-6xl mb-6">🎯</div>
-                <h3 className="text-3xl font-bold mb-4">Career Focus</h3>
-                <p className="text-xl text-purple-100 leading-relaxed">
-                  Get internship opportunities, mentorship, and direct
-                  connections to top tech companies.
-                </p>
-              </div>
-            </div>
+          <div className="max-w-4xl mt-12">
+            <motion.p 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-300 leading-relaxed mb-8"
+            >
+              The IETE Students Forum is a vibrant community dedicated to fostering innovation, collaboration, and growth among aspiring engineers and technologists. Established under the Institution of Electronics and Telecommunication Engineers (IETE), we are committed to bridging the gap between academic learning and industry expertise.
+            </motion.p>
+            <motion.p 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-300 leading-relaxed mb-8"
+            >
+              Our mission is to empower students to explore cutting-edge technologies, develop hands-on skills, and build networks that propel them toward successful careers in electronics, telecommunication, and related fields. Through workshops, hackathons, mentorship programs, and industry interactions, we provide a platform for students to transform their ideas into reality.
+            </motion.p>
+            <motion.p 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              viewport={{ once: true }}
+              className="text-xl text-gray-300 leading-relaxed"
+            >
+              Whether you're a beginner or a seasoned tech enthusiast, our community welcomes everyone with a passion for learning and innovation. Join us to connect with like-minded peers, learn from industry leaders, and make a lasting impact in the world of technology.
+            </motion.p>
           </div>
         </div>
-      </section>
+      </motion.section>
+
+      {/* Section Divider */}
+      <SectionDivider />
+
+      {/* Modern Engineers Section */}
+      <motion.section
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="relative min-h-screen flex items-center py-32"
+        id="engineers"
+      >
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+          <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
+        </div>
+        <div
+          id="Title"
+          className="relative z-10 max-w-7xl mr-auto px-8 flex flex-col h-full w-full"
+        >
+          <div>
+            <div className="flex justify-center mb-2 items-end">
+              <motion.h1
+                initial={{ y: -100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                className={`md:text-7xl font-bold text-gray-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
+                style={{
+                  fontSize: "10rem",
+                }}
+              >
+                OUR
+              </motion.h1>
+            </div>
+            <div className="flex justify-center mb-2 items-end mr-auto">
+              <motion.h1
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                viewport={{ once: true }}
+                className={`md:text-7xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide mr-auto`}
+                style={{
+                  fontSize: "10rem",
+                  color: "transparent",
+                  WebkitTextStroke: "5px rgb(255, 255, 255)",
+                }}
+              >
+                ENGINEERS
+              </motion.h1>
+            </div>
+          </div>
+          <div className="max-w-7xl mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            {/* Engineer Card 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
+            >
+              <div className="h-80 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                <Image
+                  src="/one.jpg"
+                  alt="Engineer 1"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
+                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
+                  John Doe
+                </h3>
+                <p className="text-gray-300 mb-2 text-lg font-medium">President</p>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Leading the forum with passion for innovation and technological excellence. Specialized in AI/ML and robotics with 3+ years of project experience.
+                </p>
+                <div className="flex justify-start space-x-4">
+                  <a
+                    href="https://linkedin.com/in/johndoe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                  <a
+                    href="https://instagram.com/johndoe"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Engineer Card 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
+            >
+              <div className="h-80 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                <Image
+                  src="/engineer2.jpg"
+                  alt="Engineer 2"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
+                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
+                  Jane Smith
+                </h3>
+                <p className="text-gray-300 mb-2 text-lg font-medium">Vice President</p>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Driving technical initiatives and fostering collaboration. Expert in web development, cloud computing, and emerging technologies.
+                </p>
+                <div className="flex justify-start space-x-4">
+                  <a
+                    href="https://linkedin.com/in/janesmith"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                  <a
+                    href="https://instagram.com/janesmith"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Engineer Card 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
+            >
+              <div className="h-80 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                <Image
+                  src="/engineer3.jpg"
+                  alt="Engineer 3"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
+                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
+                  Alex Brown
+                </h3>
+                <p className="text-gray-300 mb-2 text-lg font-medium">Technical Lead</p>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Architecting innovative solutions and mentoring fellow students. Passionate about IoT, embedded systems, and sustainable technology.
+                </p>
+                <div className="flex justify-start space-x-4">
+                  <a
+                    href="https://linkedin.com/in/alexbrown"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                  <a
+                    href="https://instagram.com/alexbrown"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Engineer Card 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
+            >
+              <div className="h-80 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                <Image
+                  src="/engineer4.jpg"
+                  alt="Engineer 4"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
+                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
+                  Sarah Wilson
+                </h3>
+                <p className="text-gray-300 mb-2 text-lg font-medium">Research Head</p>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Leading cutting-edge research initiatives in quantum computing and neural networks. Published researcher with multiple IEEE papers.
+                </p>
+                <div className="flex justify-start space-x-4">
+                  <a
+                    href="https://linkedin.com/in/sarahwilson"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                  <a
+                    href="https://instagram.com/sarahwilson"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Engineer Card 5 */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
+            >
+              <div className="h-80 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                <Image
+                  src="/engineer5.jpg"
+                  alt="Engineer 5"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
+                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
+                  Michael Chen
+                </h3>
+                <p className="text-gray-300 mb-2 text-lg font-medium">Events Coordinator</p>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Orchestrating impactful events and workshops. Specializes in cybersecurity, blockchain technology, and community building.
+                </p>
+                <div className="flex justify-start space-x-4">
+                  <a
+                    href="https://linkedin.com/in/michaelchen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                  <a
+                    href="https://instagram.com/michaelchen"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Engineer Card 6 */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              viewport={{ once: true }}
+              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
+            >
+              <div className="h-80 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+                <Image
+                  src="/engineer6.jpg"
+                  alt="Engineer 6"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
+                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
+                  Emily Davis
+                </h3>
+                <p className="text-gray-300 mb-2 text-lg font-medium">Innovation Lead</p>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Spearheading innovation projects and startup initiatives. Expert in product development, UX design, and emerging tech trends.
+                </p>
+                <div className="flex justify-start space-x-4">
+                  <a
+                    href="https://linkedin.com/in/emilydavis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaLinkedin size={20} />
+                  </a>
+                  <a
+                    href="https://instagram.com/emilydavis"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
+                  >
+                    <FaInstagram size={20} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Section Divider */}
+      <SectionDivider />
 
       {/* Modern Events Section */}
       <section id="events" className="py-32 bg-gray-800/30">
@@ -636,6 +975,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Section Divider */}
+      <SectionDivider />
 
       {/* Modern Contact Section */}
       <section id="contact" className="py-32">
