@@ -777,31 +777,49 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
         </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 flex flex-col">
-          {/* Title Section */}
-          <div className="mb-16">
-            <motion.h1
-              initial={{ y: -100, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
+          {/* Title Section with Large Background Text */}
+          <div className="relative mb-16">
+            {/* Large Gray "OUR" Background Text */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5 }}
               viewport={{ once: true }}
-              className={`text-6xl md:text-7xl font-bold text-gray-100 mb-2 ${antonFont.className} tracking-wide`}
-            >
-              OUR
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
-              className={`text-6xl md:text-7xl font-bold mb-8 ${antonFont.className} tracking-wide`}
+              className={`absolute left-1/2 top-0 transform -translate-x-1/2 ${antonFont.className} text-gray-600 select-none pointer-events-none`}
               style={{
-                color: "transparent",
-                WebkitTextStroke: "3px rgb(255, 255, 255)",
+                fontSize: "15rem",
+                fontWeight: "900",
+                letterSpacing: "0.05em",
+                opacity: 0.1,
+                lineHeight: "0.8",
               }}
             >
-              ENGINEERS
-            </motion.h1>
+              OUR
+            </motion.div>
+            
+            {/* Main Title */}
+            <div className="relative z-20 text-center pt-32">
+              <motion.h1
+                initial={{ y: -50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className={`text-5xl md:text-6xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide`}
+              >
+                OUR ENGINEERS
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-16"
+              >
+                Meet the brilliant minds behind our innovation. Our talented engineers drive technological advancement and mentor the next generation of tech leaders.
+              </motion.p>
+            </div>
           </div>
           
           {/* Engineers Grid with Flip Cards */}
