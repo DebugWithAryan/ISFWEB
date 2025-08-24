@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useAnimate } from "framer-motion";
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { Variants } from "framer-motion";
 import "./index.css";
 import Image from "next/image";
 import { Anton, Rubik } from "next/font/google";
@@ -77,7 +78,7 @@ const wordPaths = {
 };
 
 // Animation variants for different word groups
-const ieteVariants = {
+const ieteVariants: Variants = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i: number) => ({
     pathLength: 1,
@@ -91,7 +92,7 @@ const ieteVariants = {
   exit: { opacity: 0, transition: { duration: 0.5 } },
 };
 
-const studentsVariants = {
+const studentsVariants: Variants = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i: number) => ({
     pathLength: 1,
@@ -106,7 +107,7 @@ const studentsVariants = {
   exit: { opacity: 0, transition: { duration: 0.5 } },
 };
 
-const forumVariants = {
+const forumVariants: Variants = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i: number) => ({
     pathLength: 1,
