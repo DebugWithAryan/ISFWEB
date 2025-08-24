@@ -8,6 +8,32 @@ import Image from "next/image";
 import { Anton, Rubik } from "next/font/google";
 import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 
+// Type definitions
+interface Engineer {
+  name: string;
+  image: string;
+  description: string;
+  skills: string[];
+  linkedin: string;
+  instagram: string;
+}
+
+interface FlipCardProps {
+  engineer: Engineer;
+  delay?: number;
+}
+
+interface ScrollToPluginConfig {
+  y: HTMLElement;
+  offsetY: number;
+}
+
+interface SmoothScrollTweenConfig {
+  duration: number;
+  scrollTo: ScrollToPluginConfig;
+  ease: string;
+}
+
 // Initialize Anton font
 const antonFont = Anton({
   weight: "400",
@@ -53,7 +79,7 @@ const wordPaths = {
 // Animation variants for different word groups
 const ieteVariants = {
   hidden: { pathLength: 0, opacity: 0 },
-  visible: (i: any) => ({
+  visible: (i: number) => ({
     pathLength: 1,
     opacity: 1,
     transition: {
@@ -67,7 +93,7 @@ const ieteVariants = {
 
 const studentsVariants = {
   hidden: { pathLength: 0, opacity: 0 },
-  visible: (i: any) => ({
+  visible: (i: number) => ({
     pathLength: 1,
     opacity: 1,
     x: 0,
@@ -82,7 +108,7 @@ const studentsVariants = {
 
 const forumVariants = {
   hidden: { pathLength: 0, opacity: 0 },
-  visible: (i: any) => ({
+  visible: (i: number) => ({
     pathLength: 1,
     opacity: 1,
     x: 0,
@@ -110,7 +136,7 @@ const animatedText = {
   transition: { duration: 0.4 },
 };
 
-const FlipCard = ({ engineer, delay = 0 }) => {
+const FlipCard: React.FC<FlipCardProps> = ({ engineer, delay = 0 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -216,7 +242,7 @@ const FlipCard = ({ engineer, delay = 0 }) => {
 
 
 // Section Divider Component
-const SectionDivider = () => {
+const SectionDivider: React.FC = () => {
   return (
     <div className="relative py-24">
       <div className="absolute inset-0 flex items-center">
@@ -245,7 +271,7 @@ export default function Home() {
   // Add state for navbar scroll
   const [navScrolled, setNavScrolled] = useState(false);
 
-  const engineers = [
+  const engineers: Engineer[] = [
     {
       name: "Shouray Soni",
       image: "/ShouraySir.png",
@@ -331,16 +357,6 @@ export default function Home() {
     animate3("svg", svgAnimate);
     animate3("p", animatedText);
   };
-  interface ScrollToPluginConfig {
-    y: HTMLElement;
-    offsetY: number;
-  }
-
-  interface SmoothScrollTweenConfig {
-    duration: number;
-    scrollTo: ScrollToPluginConfig;
-    ease: string;
-  }
 
   const smoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
