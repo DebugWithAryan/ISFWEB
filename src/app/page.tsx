@@ -138,15 +138,16 @@ const animatedText = {
 
 const FlipCard: React.FC<FlipCardProps> = ({ engineer, delay = 0 }) => {
   return (
-    <div className="group relative w-full cursor-pointer perspective-1000" style={{ height: '400px' }}>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true }}
+      className="group relative w-full cursor-pointer"
+      style={{ height: '400px', perspective: '1000px' }}
+    >
       {/* Flip Container */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay }}
-        viewport={{ once: true }}
-        className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180"
-      >
+      <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
         
         {/* Front Face */}
         <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl overflow-hidden border border-gray-700/30">
@@ -234,8 +235,8 @@ const FlipCard: React.FC<FlipCardProps> = ({ engineer, delay = 0 }) => {
             </div>
           </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
