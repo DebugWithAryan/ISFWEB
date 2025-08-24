@@ -760,9 +760,9 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
         </div>
-        <div className="relative z-10 w-full px-8 flex flex-col items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8 flex flex-col">
           {/* Title Section */}
-          <div className="text-center mb-16">
+          <div className="mb-16">
             <motion.h1
               initial={{ y: -100, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
