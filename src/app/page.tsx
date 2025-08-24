@@ -110,6 +110,86 @@ const animatedText = {
   transition: { duration: 0.4 },
 };
 
+// Hover Expand Card Component
+const HoverExpandCard = ({ engineer, delay = 0 }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true }}
+      className="group relative overflow-hidden rounded-3xl bg-gray-900 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-500 cursor-pointer"
+      style={{ height: '400px' }}
+    >
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+        style={{
+          backgroundImage: `url(${engineer.image})`,
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+      </div>
+
+      {/* Content Container */}
+      <div className="relative h-full flex flex-col justify-end p-8">
+        {/* Initial State - Name only */}
+        <div className="transform transition-all duration-500 group-hover:-translate-y-16">
+          <h3 
+            className={`text-4xl font-bold text-white mb-2 group-hover:text-5xl transition-all duration-500 ${antonFont.className}`}
+          >
+            {engineer.name}
+          </h3>
+        </div>
+
+        {/* Expanded Content - Appears on hover */}
+        <div className="absolute bottom-8 left-8 right-8 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+          <div className="space-y-4">
+            <p className="text-gray-300 leading-relaxed text-lg">
+              {engineer.description}
+            </p>
+            
+            {/* Skills Tags */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {engineer.skills.map((skill, index) => (
+                <span 
+                  key={index}
+                  className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-gray-200 border border-white/20"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+
+            {/* Social Links */}
+            <div className="flex space-x-4">
+              <a
+                href={engineer.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110 border border-white/20"
+              >
+                <FaLinkedin size={20} />
+              </a>
+              <a
+                href={engineer.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110 border border-white/20"
+              >
+                <FaInstagram size={20} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Gradient overlay for better text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+      </div>
+    </motion.div>
+  );
+};
+
 // Section Divider Component
 const SectionDivider = () => {
   return (
@@ -139,6 +219,57 @@ export default function Home() {
   const [scope3, animate3] = useAnimate();
   // Add state for navbar scroll
   const [navScrolled, setNavScrolled] = useState(false);
+
+  const engineers = [
+    {
+      name: "Shouray Soni",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face",
+      description: "Leading the forum with passion for innovation and technological excellence. Specialized in building scalable applications and mentoring fellow developers.",
+      skills: ["React", "Node.js", "AI/ML", "Leadership"],
+      linkedin: "https://linkedin.com/in/johndoe",
+      instagram: "https://instagram.com/johndoe"
+    },
+    {
+      name: "Anupam Dwivedi",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b588?w=400&h=600&fit=crop&crop=face",
+      description: "Driving technical initiatives and fostering collaboration. Expert in cloud computing, system architecture, and emerging technologies.",
+      skills: ["Cloud", "DevOps", "Python", "Architecture"],
+      linkedin: "https://linkedin.com/in/janesmith",
+      instagram: "https://instagram.com/janesmith"
+    },
+    {
+      name: "Jayesh Bansal",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop&crop=face",
+      description: "Architecting innovative solutions and mentoring fellow students. Passionate about IoT, embedded systems, and sustainable technology.",
+      skills: ["IoT", "Embedded", "C++", "Hardware"],
+      linkedin: "https://linkedin.com/in/alexbrown",
+      instagram: "https://instagram.com/alexbrown"
+    },
+    {
+      name: "Prerna ",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=600&fit=crop&crop=face",
+      description: "Leading cutting-edge research initiatives in quantum computing and neural networks. Published researcher with multiple IEEE papers.",
+      skills: ["Quantum", "Research", "Neural Networks", "IEEE"],
+      linkedin: "https://linkedin.com/in/sarahwilson",
+      instagram: "https://instagram.com/sarahwilson"
+    },
+    {
+      name: "MICHAEL CHEN",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=600&fit=crop&crop=face",
+      description: "Orchestrating impactful events and workshops. Specializes in cybersecurity, blockchain technology, and community building.",
+      skills: ["Cybersecurity", "Blockchain", "Events", "Community"],
+      linkedin: "https://linkedin.com/in/michaelchen",
+      instagram: "https://instagram.com/michaelchen"
+    },
+    {
+      name: "EMILY DAVIS",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=600&fit=crop&crop=face",
+      description: "Spearheading innovation projects and startup initiatives. Expert in product development, UX design, and emerging tech trends.",
+      skills: ["Product", "UX Design", "Innovation", "Startups"],
+      linkedin: "https://linkedin.com/in/emilydavis",
+      instagram: "https://instagram.com/emilydavis"
+    }
+  ];
 
   const animateIETE = async () => {
     // Animate the IETE section
@@ -478,8 +609,6 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Section Divider */}
-      <SectionDivider />
 
       {/* Modern About Section */}
       <motion.section
@@ -489,7 +618,7 @@ export default function Home() {
         id="about"
       >
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-          <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
+          <div className="relative w-full h-full bg-white z-1 opacity-90"></div>
         </div>
         <div
           id="Title"
@@ -502,12 +631,12 @@ export default function Home() {
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                className={`md:text-7xl font-bold text-gray-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
+                className={`md:text-7xl font-bold text-black-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
                 style={{
-                  fontSize: "10rem",
+                  fontSize: "8rem",
                 }}
               >
-                ABOUT
+                ABOUT US
               </motion.h1>
             </div>
             <div className="flex justify-center mb-2 items-end mr-auto">
@@ -518,12 +647,12 @@ export default function Home() {
                 viewport={{ once: true }}
                 className={`md:text-7xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide mr-auto`}
                 style={{
-                  fontSize: "10rem",
+                  fontSize: "5rem",
                   color: "transparent",
-                  WebkitTextStroke: "5px rgb(255, 255, 255)",
+                  WebkitTextStroke: "5px rgb(15, 13, 13)",
                 }}
               >
-                IETE
+                Who We Are
               </motion.h1>
             </div>
           </div>
@@ -533,7 +662,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
-              className="text-xl text-gray-300 leading-relaxed mb-8"
+              className="text-xl text-black-300 leading-relaxed mb-8"
             >
               The IETE Students Forum is a vibrant community dedicated to fostering innovation, collaboration, and growth among aspiring engineers and technologists. Established under the Institution of Electronics and Telecommunication Engineers (IETE), we are committed to bridging the gap between academic learning and industry expertise.
             </motion.p>
@@ -542,7 +671,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               viewport={{ once: true }}
-              className="text-xl text-gray-300 leading-relaxed mb-8"
+              className="text-xl text-black-300 leading-relaxed mb-8"
             >
               Our mission is to empower students to explore cutting-edge technologies, develop hands-on skills, and build networks that propel them toward successful careers in electronics, telecommunication, and related fields. Through workshops, hackathons, mentorship programs, and industry interactions, we provide a platform for students to transform their ideas into reality.
             </motion.p>
@@ -551,7 +680,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
               viewport={{ once: true }}
-              className="text-xl text-gray-300 leading-relaxed"
+              className="text-xl text-black-300 leading-relaxed"
             >
               Whether you're a beginner or a seasoned tech enthusiast, our community welcomes everyone with a passion for learning and innovation. Join us to connect with like-minded peers, learn from industry leaders, and make a lasting impact in the world of technology.
             </motion.p>
@@ -559,10 +688,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Section Divider */}
-      <SectionDivider />
-
-      {/* Modern Engineers Section */}
+      {/* Updated Engineers Section with Hover Expand Cards */}
       <motion.section
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
@@ -585,7 +711,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className={`md:text-7xl font-bold text-gray-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
                 style={{
-                  fontSize: "10rem",
+                  fontSize: "7rem",
                 }}
               >
                 OUR
@@ -599,7 +725,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className={`md:text-7xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide mr-auto`}
                 style={{
-                  fontSize: "10rem",
+                  fontSize: "7rem",
                   color: "transparent",
                   WebkitTextStroke: "5px rgb(255, 255, 255)",
                 }}
@@ -608,288 +734,21 @@ export default function Home() {
               </motion.h1>
             </div>
           </div>
-          <div className="max-w-7xl mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-            {/* Engineer Card 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
-            >
-              <div className="h-80 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                <Image
-                  src="/one.jpg"
-                  alt="Engineer 1"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
-                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
-                  John Doe
-                </h3>
-                <p className="text-gray-300 mb-2 text-lg font-medium">President</p>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Leading the forum with passion for innovation and technological excellence. Specialized in AI/ML and robotics with 3+ years of project experience.
-                </p>
-                <div className="flex justify-start space-x-4">
-                  <a
-                    href="https://linkedin.com/in/johndoe"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaLinkedin size={20} />
-                  </a>
-                  <a
-                    href="https://instagram.com/johndoe"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaInstagram size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Engineer Card 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
-            >
-              <div className="h-80 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                <Image
-                  src="/engineer2.jpg"
-                  alt="Engineer 2"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
-                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
-                  Jane Smith
-                </h3>
-                <p className="text-gray-300 mb-2 text-lg font-medium">Vice President</p>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Driving technical initiatives and fostering collaboration. Expert in web development, cloud computing, and emerging technologies.
-                </p>
-                <div className="flex justify-start space-x-4">
-                  <a
-                    href="https://linkedin.com/in/janesmith"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaLinkedin size={20} />
-                  </a>
-                  <a
-                    href="https://instagram.com/janesmith"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaInstagram size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Engineer Card 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
-            >
-              <div className="h-80 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                <Image
-                  src="/engineer3.jpg"
-                  alt="Engineer 3"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
-                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
-                  Alex Brown
-                </h3>
-                <p className="text-gray-300 mb-2 text-lg font-medium">Technical Lead</p>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Architecting innovative solutions and mentoring fellow students. Passionate about IoT, embedded systems, and sustainable technology.
-                </p>
-                <div className="flex justify-start space-x-4">
-                  <a
-                    href="https://linkedin.com/in/alexbrown"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaLinkedin size={20} />
-                  </a>
-                  <a
-                    href="https://instagram.com/alexbrown"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaInstagram size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Engineer Card 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
-            >
-              <div className="h-80 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                <Image
-                  src="/engineer4.jpg"
-                  alt="Engineer 4"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
-                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
-                  Sarah Wilson
-                </h3>
-                <p className="text-gray-300 mb-2 text-lg font-medium">Research Head</p>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Leading cutting-edge research initiatives in quantum computing and neural networks. Published researcher with multiple IEEE papers.
-                </p>
-                <div className="flex justify-start space-x-4">
-                  <a
-                    href="https://linkedin.com/in/sarahwilson"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaLinkedin size={20} />
-                  </a>
-                  <a
-                    href="https://instagram.com/sarahwilson"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaInstagram size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Engineer Card 5 */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: true }}
-              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
-            >
-              <div className="h-80 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                <Image
-                  src="/engineer5.jpg"
-                  alt="Engineer 5"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
-                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
-                  Michael Chen
-                </h3>
-                <p className="text-gray-300 mb-2 text-lg font-medium">Events Coordinator</p>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Orchestrating impactful events and workshops. Specializes in cybersecurity, blockchain technology, and community building.
-                </p>
-                <div className="flex justify-start space-x-4">
-                  <a
-                    href="https://linkedin.com/in/michaelchen"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaLinkedin size={20} />
-                  </a>
-                  <a
-                    href="https://instagram.com/michaelchen"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaInstagram size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Engineer Card 6 */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              viewport={{ once: true }}
-              className="group bg-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/30 hover:border-gray-600/50 hover:scale-[1.02] transition-all duration-500 hover:shadow-2xl hover:shadow-black/70"
-            >
-              <div className="h-80 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                <Image
-                  src="/engineer6.jpg"
-                  alt="Engineer 6"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-8 bg-gradient-to-b from-gray-900/90 to-black/90">
-                <h3 className={`text-4xl font-bold text-gray-100 mb-3 ${antonFont.className}`}>
-                  Emily Davis
-                </h3>
-                <p className="text-gray-300 mb-2 text-lg font-medium">Innovation Lead</p>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Spearheading innovation projects and startup initiatives. Expert in product development, UX design, and emerging tech trends.
-                </p>
-                <div className="flex justify-start space-x-4">
-                  <a
-                    href="https://linkedin.com/in/emilydavis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaLinkedin size={20} />
-                  </a>
-                  <a
-                    href="https://instagram.com/emilydavis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110"
-                  >
-                    <FaInstagram size={20} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
+          
+          {/* Engineers Grid with Hover Expand Cards */}
+          <div className="max-w-7xl mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+            {engineers.map((engineer, index) => (
+              <HoverExpandCard 
+                key={engineer.name} 
+                engineer={engineer} 
+                delay={index * 0.2} 
+              />
+            ))}
           </div>
         </div>
       </motion.section>
 
-      {/* Section Divider */}
-      <SectionDivider />
+
 
       {/* Modern Events Section */}
       <section id="events" className="py-32 bg-gray-800/30">
@@ -976,8 +835,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section Divider */}
-      <SectionDivider />
 
       {/* Modern Contact Section */}
       <section id="contact" className="py-32">
