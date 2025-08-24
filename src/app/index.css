@@ -26,3 +26,43 @@
   left: 0;
   transform: none;
 }
+/* Add these styles to your index.css file */
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Additional smooth animations */
+.flip-card-inner {
+  transition: transform 0.7s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* Ensure proper 3D context */
+.flip-card {
+  perspective: 1000px;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .perspective-1000 {
+    perspective: 800px;
+  }
+}

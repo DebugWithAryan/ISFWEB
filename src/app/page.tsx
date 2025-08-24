@@ -110,85 +110,110 @@ const animatedText = {
   transition: { duration: 0.4 },
 };
 
-// Hover Expand Card Component
-const HoverExpandCard = ({ engineer, delay = 0 }) => {
+const FlipCard = ({ engineer, delay = 0 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-3xl bg-gray-900 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-500 cursor-pointer"
+      className="group relative w-full cursor-pointer perspective-1000"
       style={{ height: '400px' }}
     >
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-        style={{
-          backgroundImage: `url(${engineer.image})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-      </div>
-
-      {/* Content Container */}
-      <div className="relative h-full flex flex-col justify-end p-8">
-        {/* Initial State - Name only */}
-        <div className="transform transition-all duration-500 group-hover:-translate-y-16">
-          <h3 
-            className={`text-4xl font-bold text-white mb-2 group-hover:text-5xl transition-all duration-500 ${antonFont.className}`}
+      {/* Flip Container */}
+      <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
+        
+        {/* Front Face */}
+        <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl overflow-hidden border border-gray-700/30">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${engineer.image})`,
+            }}
           >
-            {engineer.name}
-          </h3>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+          </div>
+
+          {/* Front Content - Just the name */}
+          <div className="relative h-full flex flex-col justify-end p-8">
+            <h3 className={`text-4xl font-bold text-white ${antonFont.className}`}>
+              {engineer.name}
+            </h3>
+            
+            {/* Hover indicator */}
+            <div className="mt-4 flex items-center text-gray-300 text-sm opacity-60">
+              <span>Hover to learn more</span>
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+          </div>
         </div>
 
-        {/* Expanded Content - Appears on hover */}
-        <div className="absolute bottom-8 left-8 right-8 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-          <div className="space-y-4">
-            <p className="text-gray-300 leading-relaxed text-lg">
+        {/* Back Face */}
+        <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl overflow-hidden bg-gradient-to-br from-gray-800 via-gray-900 to-black border border-gray-600/50">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full -mr-16 -mt-16"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-white/10 to-transparent rounded-full -ml-12 -mb-12"></div>
+          </div>
+
+          {/* Back Content */}
+          <div className="relative h-full p-8 flex flex-col justify-center">
+            {/* Name */}
+            <h3 className={`text-3xl font-bold text-white mb-4 ${antonFont.className}`}>
+              {engineer.name}
+            </h3>
+            
+            {/* Description */}
+            <p className="text-gray-300 leading-relaxed text-base mb-6 flex-grow">
               {engineer.description}
             </p>
             
-            {/* Skills Tags */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {engineer.skills.map((skill, index) => (
-                <span 
-                  key={index}
-                  className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-gray-200 border border-white/20"
-                >
-                  {skill}
-                </span>
-              ))}
+            {/* Skills */}
+            <div className="mb-6">
+              <div className="flex flex-wrap gap-2">
+                {engineer.skills.map((skill, index) => (
+                  <span 
+                    key={index}
+                    className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm text-gray-200 border border-white/20 hover:bg-white/20 transition-colors duration-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mt-auto">
               <a
                 href={engineer.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-[#0077B5] hover:bg-[#0077B5] hover:text-white transition-all duration-300 hover:scale-110 border border-white/20"
+                className="flex-1 bg-[#0077B5] text-white py-3 px-4 rounded-xl flex items-center justify-center hover:bg-[#005885] transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
-                <FaLinkedin size={20} />
+                <FaLinkedin size={18} className="mr-2" />
+                <span className="text-sm font-medium">LinkedIn</span>
               </a>
               <a
                 href={engineer.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-[#E4405F] hover:bg-[#E4405F] hover:text-white transition-all duration-300 hover:scale-110 border border-white/20"
+                className="flex-1 bg-gradient-to-r from-[#E4405F] to-[#C13584] text-white py-3 px-4 rounded-xl flex items-center justify-center hover:from-[#C23450] hover:to-[#A02D72] transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
-                <FaInstagram size={20} />
+                <FaInstagram size={18} className="mr-2" />
+                <span className="text-sm font-medium">Instagram</span>
               </a>
             </div>
           </div>
         </div>
-
-        {/* Gradient overlay for better text readability */}
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
       </div>
     </motion.div>
   );
 };
+
 
 // Section Divider Component
 const SectionDivider = () => {
@@ -223,7 +248,7 @@ export default function Home() {
   const engineers = [
     {
       name: "Shouray Soni",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face",
+      image: "/ShouraySir.png",
       description: "Leading the forum with passion for innovation and technological excellence. Specialized in building scalable applications and mentoring fellow developers.",
       skills: ["React", "Node.js", "AI/ML", "Leadership"],
       linkedin: "https://linkedin.com/in/johndoe",
@@ -231,7 +256,7 @@ export default function Home() {
     },
     {
       name: "Anupam Dwivedi",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b588?w=400&h=600&fit=crop&crop=face",
+      image: "/AnupamSir.png",
       description: "Driving technical initiatives and fostering collaboration. Expert in cloud computing, system architecture, and emerging technologies.",
       skills: ["Cloud", "DevOps", "Python", "Architecture"],
       linkedin: "https://linkedin.com/in/janesmith",
@@ -239,31 +264,48 @@ export default function Home() {
     },
     {
       name: "Jayesh Bansal",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop&crop=face",
+      image: "/JayeshSir.png",
       description: "Architecting innovative solutions and mentoring fellow students. Passionate about IoT, embedded systems, and sustainable technology.",
       skills: ["IoT", "Embedded", "C++", "Hardware"],
       linkedin: "https://linkedin.com/in/alexbrown",
       instagram: "https://instagram.com/alexbrown"
     },
     {
-      name: "Prerna ",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=600&fit=crop&crop=face",
+      name: "Prerna Khesari",
+      image: "/PrernaMam.png",
       description: "Leading cutting-edge research initiatives in quantum computing and neural networks. Published researcher with multiple IEEE papers.",
       skills: ["Quantum", "Research", "Neural Networks", "IEEE"],
       linkedin: "https://linkedin.com/in/sarahwilson",
       instagram: "https://instagram.com/sarahwilson"
     },
     {
-      name: "MICHAEL CHEN",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=600&fit=crop&crop=face",
+      name: "Srijan Srivastava",
+      image: "/SrijanSir.png",
+      description: "Spearheading innovation projects and startup initiatives. Expert in product development, UX design, and emerging tech trends.",
+      skills: ["Product", "UX Design", "Innovation", "Startups"],
+      linkedin: "https://linkedin.com/in/emilydavis",
+      instagram: "https://instagram.com/emilydavis"
+    },
+    {
+      name: "Tanish Bhole",
+      image: "/TanishSir.png",
       description: "Orchestrating impactful events and workshops. Specializes in cybersecurity, blockchain technology, and community building.",
       skills: ["Cybersecurity", "Blockchain", "Events", "Community"],
       linkedin: "https://linkedin.com/in/michaelchen",
       instagram: "https://instagram.com/michaelchen"
     },
+    
     {
-      name: "EMILY DAVIS",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=600&fit=crop&crop=face",
+      name: "Brij Bhushan Sharma",
+      image: "/BrijSir.png",
+      description: "Spearheading innovation projects and startup initiatives. Expert in product development, UX design, and emerging tech trends.",
+      skills: ["Product", "UX Design", "Innovation", "Startups"],
+      linkedin: "https://linkedin.com/in/emilydavis",
+      instagram: "https://instagram.com/emilydavis"
+    },
+    {
+      name: "Tanya Singh",
+      image: "/TanyaMam.png",
       description: "Spearheading innovation projects and startup initiatives. Expert in product development, UX design, and emerging tech trends.",
       skills: ["Product", "UX Design", "Innovation", "Startups"],
       linkedin: "https://linkedin.com/in/emilydavis",
@@ -620,67 +662,87 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <div className="relative w-full h-full bg-white z-1 opacity-90"></div>
         </div>
-        <div
-          id="Title"
-          className="relative z-10 max-w-7xl mr-auto px-8 flex flex-col h-full"
-        >
-          <div>
-            <div className="flex justify-center mb-2 items-end">
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-8 flex flex-col h-full w-full">
+          {/* Title Section with Large Background ABOUT */}
+          <div className="relative mb-16">
+            {/* Large Gray "ABOUT" Background Text - Positioned on Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2 }}
+              viewport={{ once: true }}
+              className={`absolute left-0 top-5 ${antonFont.className} text-gray-300 select-none pointer-events-none`}
+              style={{
+                fontSize: "12rem",
+                fontWeight: "900",
+                letterSpacing: "0.05em",
+                opacity: 0.15,
+                lineHeight: "0.8",
+                transform: "translateY(-20px)",
+              }}
+            >
+              ABOUT
+            </motion.div>
+            
+            {/* Small "ABOUT US" and "WHO WE ARE" Text Over the Gray Text */}
+            <div className="relative z-20 pt-20 pl-6">
               <motion.h1
-                initial={{ y: -100, opacity: 0 }}
+                initial={{ y: -50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className={`md:text-7xl font-bold text-black-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
+                className={`font-bold text-black mb-0.5 ${antonFont.className} tracking-wide`}
                 style={{
-                  fontSize: "8rem",
+                  fontSize: "2.5rem",
+                  fontWeight: "900",
                 }}
               >
                 ABOUT US
               </motion.h1>
-            </div>
-            <div className="flex justify-center mb-2 items-end mr-auto">
-              <motion.h1
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.3 }}
+              
+              <motion.h2
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className={`md:text-7xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide mr-auto`}
+                className={`font-bold text-black ${antonFont.className} tracking-wide`}
                 style={{
-                  fontSize: "5rem",
-                  color: "transparent",
-                  WebkitTextStroke: "5px rgb(15, 13, 13)",
+                  fontSize: "1.5rem",
+                  fontWeight: "700",
                 }}
               >
-                Who We Are
-              </motion.h1>
+                WHO WE ARE
+              </motion.h2>
             </div>
           </div>
-          <div className="max-w-4xl mt-12">
+          
+          {/* Content Section */}
+          <div className="max-w-4xl">
             <motion.p 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="text-xl text-black-300 leading-relaxed mb-8"
+              className="text-xl text-gray-800 leading-relaxed mb-6"
             >
               The IETE Students Forum is a vibrant community dedicated to fostering innovation, collaboration, and growth among aspiring engineers and technologists. Established under the Institution of Electronics and Telecommunication Engineers (IETE), we are committed to bridging the gap between academic learning and industry expertise.
             </motion.p>
             <motion.p 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="text-xl text-black-300 leading-relaxed mb-8"
+              className="text-xl text-gray-800 leading-relaxed mb-6"
             >
               Our mission is to empower students to explore cutting-edge technologies, develop hands-on skills, and build networks that propel them toward successful careers in electronics, telecommunication, and related fields. Through workshops, hackathons, mentorship programs, and industry interactions, we provide a platform for students to transform their ideas into reality.
             </motion.p>
             <motion.p 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
               viewport={{ once: true }}
-              className="text-xl text-black-300 leading-relaxed"
+              className="text-xl text-gray-800 leading-relaxed"
             >
               Whether you're a beginner or a seasoned tech enthusiast, our community welcomes everyone with a passion for learning and innovation. Join us to connect with like-minded peers, learn from industry leaders, and make a lasting impact in the world of technology.
             </motion.p>
@@ -688,8 +750,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Updated Engineers Section with Hover Expand Cards */}
-      <motion.section
+{/* Modern Engineers Section */}
+<motion.section
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         className="relative min-h-screen flex items-center py-32"
@@ -698,57 +760,76 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
         </div>
-        <div
-          id="Title"
-          className="relative z-10 max-w-7xl mr-auto px-8 flex flex-col h-full w-full"
-        >
-          <div>
-            <div className="flex justify-center mb-2 items-end">
-              <motion.h1
-                initial={{ y: -100, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-                className={`md:text-7xl font-bold text-gray-100 mb-1 ${antonFont.className} tracking-wide mr-auto`}
-                style={{
-                  fontSize: "7rem",
-                }}
-              >
-                OUR
-              </motion.h1>
-            </div>
-            <div className="flex justify-center mb-2 items-end mr-auto">
-              <motion.h1
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.3 }}
-                viewport={{ once: true }}
-                className={`md:text-7xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide mr-auto`}
-                style={{
-                  fontSize: "7rem",
-                  color: "transparent",
-                  WebkitTextStroke: "5px rgb(255, 255, 255)",
-                }}
-              >
-                ENGINEERS
-              </motion.h1>
-            </div>
+        <div className="relative z-10 w-full px-8 flex flex-col items-center">
+          {/* Title Section */}
+          <div className="text-center mb-16">
+            <motion.h1
+              initial={{ y: -100, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className={`text-6xl md:text-7xl font-bold text-gray-100 mb-2 ${antonFont.className} tracking-wide`}
+            >
+              OUR
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className={`text-6xl md:text-7xl font-bold mb-8 ${antonFont.className} tracking-wide`}
+              style={{
+                color: "transparent",
+                WebkitTextStroke: "3px rgb(255, 255, 255)",
+              }}
+            >
+              ENGINEERS
+            </motion.h1>
           </div>
           
-          {/* Engineers Grid with Hover Expand Cards */}
-          <div className="max-w-7xl mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-            {engineers.map((engineer, index) => (
-              <HoverExpandCard 
-                key={engineer.name} 
-                engineer={engineer} 
-                delay={index * 0.2} 
-              />
-            ))}
+          {/* Engineers Grid with Flip Cards */}
+          <div className="w-full max-w-7xl">
+            {/* First Row - 2 Cards */}
+            <div className="flex justify-center mb-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-4xl">
+                {engineers.slice(0, 2).map((engineer, index) => (
+                  <FlipCard 
+                    key={engineer.name} 
+                    engineer={engineer} 
+                    delay={index * 0.2} 
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Second Row - 3 Cards */}
+            <div className="flex justify-center mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+                {engineers.slice(2, 5).map((engineer, index) => (
+                  <FlipCard 
+                    key={engineer.name} 
+                    engineer={engineer} 
+                    delay={(index + 2) * 0.2} 
+                  />
+                ))}
+              </div>
+            </div>
+            
+            {/* Third Row - 3 Cards */}
+            <div className="flex justify-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
+                {engineers.slice(5).map((engineer, index) => (
+                  <FlipCard 
+                    key={engineer.name} 
+                    engineer={engineer} 
+                    delay={(index + 5) * 0.2} 
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </motion.section>
-
-
 
       {/* Modern Events Section */}
       <section id="events" className="py-32 bg-gray-800/30">
