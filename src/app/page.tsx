@@ -329,7 +329,7 @@ export default function Home() {
       image: "/BrijSir.png",
       description: "EX INTERN~ CDC { JPVL } || Domain-AI/ML , DATA SCIENCE",
       skills: [],
-      linkedin: "https://linkedin.com/in/brij-sharma-ml",
+      linkedin: "https://linkedin.com/in/brij-sharma-m",
       instagram: "https://instagram.com/emilydavis"
     },
     {
