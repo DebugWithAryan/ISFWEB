@@ -848,90 +848,218 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Modern Events Section */}
-      <section id="events" className="py-32 bg-gray-800/30">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-24">
-            <div className="inline-flex items-center px-4 py-2 bg-[#2496FE]/20 rounded-full text-[#2496FE] text-sm font-medium mb-6">
-              Upcoming Events
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-100 mb-8">
-              What's <span className="text-[#2496FE]">Next</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <div className="group bg-gray-800/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/50 hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-black/50">
-              <div className="h-48 bg-gradient-to-br from-[#2496FE] to-[#1e7ce8] relative">
-                <div className="absolute top-4 left-4 bg-black/20 backdrop-blur-sm rounded-xl px-3 py-1 text-white text-sm font-medium">
-                  Workshop
-                </div>
-              </div>
-              <div className="p-8">
-                <div className="text-sm text-[#2496FE] font-semibold mb-3">
-                  March 15, 2024
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-100">
-                  React Masterclass
-                </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  Deep dive into React 18 features, hooks, and modern
-                  development patterns.
-                </p>
-                <button className="text-[#2496FE] font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                  Learn More →
-                </button>
-              </div>
-            </div>
-
-            <div className="group bg-gray-800/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/50 hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-black/50">
-              <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-500 relative">
-                <div className="absolute top-4 left-4 bg-black/20 backdrop-blur-sm rounded-xl px-3 py-1 text-white text-sm font-medium">
-                  Conference
-                </div>
-              </div>
-              <div className="p-8">
-                <div className="text-sm text-purple-500 font-semibold mb-3">
-                  March 22, 2024
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-100">
-                  AI Revolution Summit
-                </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  Explore the latest in AI/ML with industry experts and hands-on
-                  demos.
-                </p>
-                <button className="text-purple-500 font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                  Register Now →
-                </button>
-              </div>
-            </div>
-
-            <div className="group bg-gray-800/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-700/50 hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-black/50">
-              <div className="h-48 bg-gradient-to-br from-green-500 to-emerald-500 relative">
-                <div className="absolute top-4 left-4 bg-black/20 backdrop-blur-sm rounded-xl px-3 py-1 text-white text-sm font-medium">
-                  Hackathon
-                </div>
-              </div>
-              <div className="p-8">
-                <div className="text-sm text-green-500 font-semibold mb-3">
-                  March 29-31, 2024
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-100">
-                  TechClub Hackathon
-                </h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  48 hours of coding, creativity, and collaboration with $10K in
-                  prizes.
-                </p>
-                <button className="text-green-500 font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                  Join Competition →
-                </button>
-              </div>
-            </div>
-          </div>
+      {/* Modern "What We Do" Events Section */}
+      <motion.section
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="relative min-h-screen flex items-center py-32"
+        id="events"
+      >
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+          <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
         </div>
-      </section>
+        
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
+          {/* Title Section with Large Background Text */}
+          <div className="relative mb-16">
+            {/* Large Gray "WHAT?" Background Text */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5 }}
+              viewport={{ once: true }}
+              className={`absolute left-1/2 top-0 transform -translate-x-1/2 ${antonFont.className} text-gray-600 select-none pointer-events-none`}
+              style={{
+                fontSize: "15rem",
+                fontWeight: "900",
+                letterSpacing: "0.05em",
+                opacity: 0.1,
+                lineHeight: "0.8",
+              }}
+            >
+              WHAT?
+            </motion.div>
+            
+            {/* Main Title */}
+            <div className="relative z-20 text-center pt-32">
+              <motion.h1
+                initial={{ y: -50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className={`text-5xl md:text-6xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide`}
+              >
+                WHAT WE DO
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              >
+                Discover the diverse range of activities, workshops, and events that drive innovation and foster growth in our community
+              </motion.p>
+            </div>
+          </div>
+
+          {/* Hover-Expand Cards Container */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="relative w-full max-w-6xl mx-auto"
+          >
+            {/* Cards Row */}
+            <div className="flex items-center justify-center gap-2 h-80">
+              
+              {/* Workshop Card */}
+              <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-br from-orange-500 via-red-500 to-pink-500">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
+                    <h3 className="text-white text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      Workshops
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                      Hands-on learning sessions covering cutting-edge technologies, programming languages, and industry best practices.
+                    </p>
+                  </div>
+                  <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+                    Learn
+                  </div>
+                </div>
+              </div>
+
+              {/* Seminars Card */}
+              <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
+                    <h3 className="text-white text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      Seminars
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                      Industry expert talks and knowledge-sharing sessions that bridge the gap between academia and real-world applications.
+                    </p>
+                  </div>
+                  <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+                    Inspire
+                  </div>
+                </div>
+              </div>
+
+              {/* Hackathons Card */}
+              <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
+                    <h3 className="text-white text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      Hackathons
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                      Intensive coding competitions where creativity meets innovation. Build solutions, win prizes, and showcase your skills.
+                    </p>
+                  </div>
+                  <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+                    Compete
+                  </div>
+                </div>
+              </div>
+
+              {/* Projects Card */}
+              <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-br from-purple-500 via-violet-500 to-indigo-600">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
+                    <h3 className="text-white text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      Projects
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                      Collaborative development projects that solve real-world problems while building your portfolio and gaining experience.
+                    </p>
+                  </div>
+                  <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+                    Build
+                  </div>
+                </div>
+              </div>
+
+              {/* Networking Card */}
+              <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
+                    <h3 className="text-white text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      Networking
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                      Connect with like-minded peers, industry professionals, and mentors who can guide your career journey.
+                    </p>
+                  </div>
+                  <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+                    Connect
+                  </div>
+                </div>
+              </div>
+
+              {/* Research Card */}
+              <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-br from-rose-400 via-pink-500 to-purple-600">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
+                    <h3 className="text-white text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      Research
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                      Cutting-edge research initiatives in electronics, AI, IoT, and emerging technologies with publication opportunities.
+                    </p>
+                  </div>
+                  <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+                    Discover
+                  </div>
+                </div>
+              </div>
+
+              {/* Innovation Card */}
+              <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer bg-gradient-to-br from-amber-400 via-yellow-500 to-orange-500">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500"></div>
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
+                    <h3 className="text-white text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                      Innovation
+                    </h3>
+                    <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+                      Incubation programs and startup mentorship to transform your innovative ideas into viable business solutions.
+                    </p>
+                  </div>
+                  <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+                    Create
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Call to Action */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+              Ready to be part of something extraordinary? Join our community and explore endless possibilities in technology and innovation.
+            </p>
+            <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
+              Join Our Community
+            </button>
+          </motion.div>
+        </div>
+      </motion.section>
 
 
       {/* Modern Contact Section */}
