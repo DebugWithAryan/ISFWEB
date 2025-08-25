@@ -925,7 +925,7 @@ export default function Home() {
       </div>
     </div>
 
-    {/* Updated Cards Container with Local Images/Patterns */}
+    {/* Updated Cards Container - No Dark Colors */}
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -939,7 +939,7 @@ export default function Home() {
         {/* Workshop Card */}
         <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer">
           {/* Background Image */}
-          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-30 opacity-60">
+          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-70 opacity-90">
             <Image
               src="/workshop.png"
               alt="Workshop Poster"
@@ -947,16 +947,15 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/60 transition-all duration-500"></div>
+          {/* Removed dark gradient overlay */}
           
           <div className="absolute inset-0 p-6 flex flex-col justify-end">
             <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
-              
-              <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+              <p className="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 bg-black/50 backdrop-blur-sm rounded-lg p-3">
                 Hands-on learning sessions covering cutting-edge technologies, programming languages, and industry best practices. Join our expert-led workshops to enhance your technical skills.
               </p>
             </div>
-            <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 text-black text-sm font-medium">
               Learn
             </div>
           </div>
@@ -965,7 +964,7 @@ export default function Home() {
         {/* Seminars Card */}
         <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer">
           {/* Background Image */}
-          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-30 opacity-60">
+          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-70 opacity-90">
             <Image
               src="/seminars.png"
               alt="Seminar Poster"
@@ -973,25 +972,24 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/60 transition-all duration-500"></div>
+          {/* Removed dark gradient overlay */}
           
           <div className="absolute inset-0 p-6 flex flex-col justify-end">
             <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
-              
-              <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+              <p className="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 bg-black/50 backdrop-blur-sm rounded-lg p-3">
                 Industry expert talks and knowledge-sharing sessions that bridge the gap between academia and real-world applications. Get insights from top professionals.
               </p>
             </div>
-            <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 text-black text-sm font-medium">
               Inspire
             </div>
           </div>
         </div>
 
         {/* Events Card */}
-        <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer ">
+        <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer">
           {/* Background Image */}
-          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-30 opacity-60">
+          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-70 opacity-90">
             <Image
               src="/events.png"
               alt="Events Poster"
@@ -999,25 +997,24 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/60 transition-all duration-500"></div>
+          {/* Removed dark gradient overlay */}
           
           <div className="absolute inset-0 p-6 flex flex-col justify-end">
             <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
-              
-              <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+              <p className="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 bg-black/50 backdrop-blur-sm rounded-lg p-3">
                 Intensive coding competitions where creativity meets innovation. Build solutions, win prizes, and showcase your skills in 48-hour challenges.
               </p>
             </div>
-            <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 text-black text-sm font-medium">
               Compete
             </div>
           </div>
         </div>
 
         {/* Exhibition Card */}
-        <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer ">
+        <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer">
           {/* Background Image */}
-          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-30 opacity-60">
+          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-70 opacity-90">
             <Image
               src="/exhibition.png"
               alt="Exhibition Poster"
@@ -1025,25 +1022,24 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/60 transition-all duration-500"></div>
+          {/* Removed dark gradient overlay */}
           
           <div className="absolute inset-0 p-6 flex flex-col justify-end">
             <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
-              
-              <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+              <p className="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 bg-black/50 backdrop-blur-sm rounded-lg p-3">
                 Collaborative development projects that solve real-world problems while building your portfolio and gaining valuable industry experience.
               </p>
             </div>
-            <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 text-black text-sm font-medium">
               Explore
             </div>
           </div>
         </div>
 
         {/* Networking Card */}
-        <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer ">
+        <div className="group relative h-full transition-all duration-500 ease-in-out hover:flex-[2] flex-[0.5] rounded-2xl overflow-hidden cursor-pointer">
           {/* Background Image */}
-          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-30 opacity-60">
+          <div className="absolute inset-0 transition-all duration-500 group-hover:opacity-70 opacity-90">
             <Image
               src="/PSD.png"
               alt="Networking Event Poster"
@@ -1051,16 +1047,15 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/60 transition-all duration-500"></div>
+          {/* Removed dark gradient overlay */}
           
           <div className="absolute inset-0 p-6 flex flex-col justify-end">
             <div className="transform transition-all duration-500 group-hover:translate-y-0 translate-y-8">
-              
-              <p className="text-white/90 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+              <p className="text-white text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 bg-black/50 backdrop-blur-sm rounded-lg p-3">
                 Connect with like-minded peers, industry professionals, and mentors who can guide your career journey and open new opportunities.
               </p>
             </div>
-            <div className="absolute top-6 left-6 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1 text-white text-sm font-medium">
+            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1 text-black text-sm font-medium">
               Tech Fest
             </div>
           </div>
@@ -1069,145 +1064,211 @@ export default function Home() {
       </div>
     </motion.div>
 
-    {/* Call to Action */}
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.6 }}
-      viewport={{ once: true }}
-      className="text-center mt-16"
-    >
-      <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-        Ready to be part of something extraordinary? Join our community and explore endless possibilities in technology and innovation.
-      </p>
-      <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
-        Join Our Community
-      </button>
-    </motion.div>
   </div>
 </motion.section>
 
-
       {/* Modern Contact Section */}
-      <section id="contact" className="py-32">
-        <div className="max-w-4xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-100 mb-8">
-              Let's <span className="text-[#2496FE]">Connect</span>
-            </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              Ready to join our community? We'd love to hear from you.
-            </p>
-          </div>
-
-          <div className="bg-gray-800/60 backdrop-blur-xl rounded-3xl p-12 border border-gray-700/50 shadow-2xl shadow-black/50">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="space-y-8">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#2496FE]/20 rounded-2xl flex items-center justify-center">
-                    <span className="text-[#2496FE] text-xl">📧</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-100">Email Us</div>
-                    <div className="text-gray-300">
-                      hello@techclub.university.edu
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#2496FE]/20 rounded-2xl flex items-center justify-center">
-                    <span className="text-[#2496FE] text-xl">📍</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-100">Visit Us</div>
-                    <div className="text-gray-300">
-                      Innovation Center, Room 304
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-[#2496FE]/20 rounded-2xl flex items-center justify-center">
-                    <span className="text-[#2496FE] text-xl">💬</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-100">Discord</div>
-                    <div className="text-gray-300">@TechClubCommunity</div>
-                  </div>
-                </div>
-              </div>
-
-              <form className="space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full px-6 py-4 bg-gray-700/50 border border-gray-600 rounded-2xl focus:ring-2 focus:ring-[#2496FE] focus:border-transparent transition-all duration-300 placeholder-gray-400 text-gray-200"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full px-6 py-4 bg-gray-700/50 border border-gray-600 rounded-2xl focus:ring-2 focus:ring-[#2496FE] focus:border-transparent transition-all duration-300 placeholder-gray-400 text-gray-200"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    rows={4}
-                    placeholder="Your Message"
-                    className="w-full px-6 py-4 bg-gray-700/50 border border-gray-600 rounded-2xl focus:ring-2 focus:ring-[#2496FE] focus:border-transparent transition-all duration-300 placeholder-gray-400 text-gray-200"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-[#2496FE] text-white py-4 rounded-2xl font-semibold hover:bg-[#1e7ce8] transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#2496FE]/25"
-                >
-                  Send Message
-                </button>
-              </form>
+      <motion.section
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="relative min-h-screen flex items-center py-32"
+        id="contact"
+      >
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+          <div className="relative w-full h-full bg-black z-1 opacity-90"></div>
+        </div>
+        
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
+          {/* Title Section with Large Background Text */}
+          <div className="relative mb-16">
+            {/* Large Gray "REACH" Background Text */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5 }}
+              viewport={{ once: true }}
+              className={`absolute left-1/2 top-0 transform -translate-x-1/2 ${antonFont.className} text-gray-600 select-none pointer-events-none`}
+              style={{
+                fontSize: "15rem",
+                fontWeight: "900",
+                letterSpacing: "0.05em",
+                opacity: 0.1,
+                lineHeight: "0.8",
+              }}
+            >
+              REACH
+            </motion.div>
+            
+            {/* Main Title */}
+            <div className="relative z-20 text-center pt-32">
+              <motion.h1
+                initial={{ y: -50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className={`text-5xl md:text-6xl font-bold text-gray-100 mb-4 ${antonFont.className} tracking-wide`}
+              >
+                REACH OUT TO US
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              >
+                Connect with us through our social media or visit us at our campus location
+              </motion.p>
             </div>
           </div>
+
+          {/* Contact Cards - Dark Themed */}
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+          >
+            
+            {/* Instagram Card - Dark Theme */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="group relative h-80"
+            >
+              <a
+                href="https://instagram.com/juet_isf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black p-8 rounded-3xl text-center hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-pink-500/10 cursor-pointer border border-gray-700/50 hover:border-pink-500/30 h-full flex flex-col justify-between">
+                  <div className="flex flex-col items-center">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 bg-gradient-to-br from-[#E4405F] to-[#C13584] rounded-full flex items-center justify-center">
+                        <FaInstagram size={40} className="text-white" />
+                      </div>
+                    </div>
+                    <h3 className={`text-2xl font-bold text-white mb-2 ${antonFont.className}`}>
+                      FOLLOW US
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-4">
+                      Stay updated with our latest events and activities
+                    </p>
+                  </div>
+                  <div className="text-gray-400 text-sm font-medium">
+                    @juet_isf
+                  </div>
+                </div>
+              </a>
+            </motion.div>
+
+            {/* Email Card - Dark Theme */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              viewport={{ once: true }}
+              className="group relative h-80"
+            >
+              <a
+                href="mailto:isf.dextra@gmail.com"
+                className="block h-full"
+              >
+                <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black p-8 rounded-3xl text-center hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 cursor-pointer border border-gray-700/50 hover:border-blue-500/30 h-full flex flex-col justify-between">
+                  <div className="flex flex-col items-center">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center">
+                        <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className={`text-2xl font-bold text-white mb-2 ${antonFont.className}`}>
+                      EMAIL US
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-4">
+                      Get in touch with us directly
+                    </p>
+                  </div>
+                  <div className="text-gray-400 text-sm font-medium break-all">
+                    isf.dextra@gmail.com
+                  </div>
+                </div>
+              </a>
+            </motion.div>
+
+            {/* Location Card - Dark Theme */}
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              viewport={{ once: true }}
+              className="group relative h-80"
+            >
+              <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black p-8 rounded-3xl text-center hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-green-500/10 cursor-pointer border border-gray-700/50 hover:border-green-500/30 h-full flex flex-col justify-between">
+                <div className="flex flex-col items-center">
+                  <div className="flex justify-center mb-6">
+                    <div className="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center">
+                      <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+                  <h3 className={`text-2xl font-bold text-white mb-2 ${antonFont.className}`}>
+                    VISIT US
+                  </h3>
+                  <p className="text-gray-300 text-sm mb-4">
+                    Come meet us at our campus location
+                  </p>
+                </div>
+                <div className="text-gray-400 text-sm font-medium leading-relaxed">
+                  Near Tuck One,<br />
+                  ECE Technical Room<br />
+                  Next to JYC Room
+                </div>
+              </div>
+            </motion.div>
+
+          </motion.div>
+
+          {/* Call to Action */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+              Ready to be part of something extraordinary? Join our community and explore endless possibilities in technology and innovation.
+            </p>
+            <a
+              href="https://chat.whatsapp.com/C7WaipdVEXNEEVgR0Thq3G"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
+            >
+              Join Our Community
+            </a>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
+      
 
       {/* Modern Footer */}
       <footer className="py-16 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center space-y-8">
-            <div className="text-3xl font-bold text-[#2496FE]">TechClub</div>
-            <p className="text-gray-300 max-w-md mx-auto">
-              Empowering the next generation of technologists and innovators.
-            </p>
-            <div className="flex justify-center space-x-8">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-[#2496FE] transition-colors duration-300 font-medium"
-              >
-                Discord
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-[#2496FE] transition-colors duration-300 font-medium"
-              >
-                GitHub
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-[#2496FE] transition-colors duration-300 font-medium"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-[#2496FE] transition-colors duration-300 font-medium"
-              >
-                Instagram
-              </a>
-            </div>
+            
+            
             <div className="text-sm text-gray-400 pt-8 border-t border-gray-800">
-              © 2024 TechClub. Crafted with passion for innovation.
+              Developed and Designed by Aryan Jaiswal and Tanish Bhole.
             </div>
           </div>
         </div>
